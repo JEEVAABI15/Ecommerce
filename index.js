@@ -35,11 +35,13 @@ app.use('/api/v1/products', productRoutes);
 //     console.error('Error in connectionDB:',err.message);
 //   } 
 // }
+connectDB();
 app.get('/', async(req, res) => {
   
   try{
-    const isDbConnected = await connectDB();
-    res.send('Hello World!'+isDbConnected);
+    // const isDbConnected = await connectDB();
+
+    res.send('Hello World!');
   }
   catch(err){
     console.error('Error in /:',err.message);
