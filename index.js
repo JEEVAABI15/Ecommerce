@@ -29,7 +29,14 @@ app.use('/api/v1/products', productRoutes);
 
 app.get('/', async(req, res) => {
   const isDbConnected = await connectDB();
-  res.send('Hello World!'+isDbConnected);
+  try{
+    res.send('Hello World!'+isDbConnected);
+  }
+  catch(err){
+    console.error('Error in /:',err.message);
+    res.send('Error in /:'+err.message);    
+  }
+  
 });
 
 app.listen(PORT, () => {
