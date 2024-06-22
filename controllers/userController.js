@@ -39,7 +39,7 @@ const registerUser = async (req, res) => {
 
 const authUser = async (req, res) => {
   const { email, password } = req.body;
-
+try{
   const user = await User.findOne({ email });
 
   if (user && (await user.matchPassword(password))) {
@@ -62,6 +62,10 @@ const authUser = async (req, res) => {
   } else {
     res.status(401).json({ message: 'Invalid email or password' });
   }
+}catch(error){
+  console.error('Error in authUser:', error);
+  res.status(500).json({ message: 'Server error in authUser' });
+}  
 };
 
 const getUserProfile = async (req, res) => {
