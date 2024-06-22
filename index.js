@@ -22,12 +22,13 @@ app.use('/api/v1/products', productRoutes);
 
 
 
-connectDB();
+const isDbConnected = connectDB();
+
 
 
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('Hello World!'+isDbConnected);
 });
 
 app.listen(PORT, () => {
