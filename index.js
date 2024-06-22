@@ -22,12 +22,13 @@ app.use('/api/v1/products', productRoutes);
 
 
 
-const isDbConnected = connectDB();
 
 
 
 
-app.get('/', (req, res) => {
+
+app.get('/', async(req, res) => {
+  const isDbConnected = await connectDB();
   res.send('Hello World!'+isDbConnected);
 });
 
