@@ -20,12 +20,6 @@ const categorySchema = new mongoose.Schema({
 
 // SubCategory Schema
 const subCategorySchema = new mongoose.Schema({
-    // categoryID: 
-    // {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'Category',
-    //     required: true 
-    // },
     name: 
     {
         type: String,
@@ -39,13 +33,6 @@ const subCategorySchema = new mongoose.Schema({
 
 // Product Schema
 const productSchema = new mongoose.Schema({
-
-    // subCategoryID: 
-    // {
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref: 'SubCategory',
-    //     required: true
-    // },
     name: 
     {
         type: String,
