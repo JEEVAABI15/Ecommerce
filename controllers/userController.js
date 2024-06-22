@@ -1,6 +1,7 @@
 // controllers/userController.js
 
 const User = require('../models/user');
+const Order = require('../models/order');
 const jwt = require('jsonwebtoken');
 
 const generateToken = (id) => {
@@ -68,20 +69,56 @@ try{
 }  
 };
 
-const getUserProfile = async (req, res) => {
-  const user = await User.findById(req.user._id);
+// const getUserProfile = async (req, res) => {
+//   const user = await User.findById(req.user._id);
 
-  if (user) {
+//   if (user) {
+//     res.json({
+//       _id: user._id,
+//       username: user.username,
+//       email: user.email,
+//       role: user.role,
+//     });
+//   } else {
+//     res.status(404).json({ message: 'User not found' });
+//   }
+// };
+
+const getUserProfile = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      return res.status(404).json({ message: 'User not found' });
+    }
+
+    // Fetch orders for the user
+    const orders = await Order.find({ user: req.user._id }).populate('products.product');
+
     res.json({
       _id: user._id,
       username: user.username,
       email: user.email,
       role: user.role,
+      orders: orders.map(order => ({
+        _id: order._id,
+        products: order.products.map(product => ({
+          product: {
+            _id: product.product._id,
+            name: product.product.name,
+            price: product.product.price,
+          },
+          quantity: product.quantity,
+        })),
+        orderDate: order.orderDate,
+      })),
     });
-  } else {
-    res.status(404).json({ message: 'User not found' });
+  } catch (error) {
+    console.error('Error fetching user profile:', error);
+    res.status(500).json({ message: 'Server error' });
   }
 };
+ 
 
 const getUsers = async (req, res) => {
   const users = await User.find({});
