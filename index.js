@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const cors = require('cors');
 const userRoutes = require('./routes/userRoutes');
 const productRoutes = require('./routes/productRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 require('dotenv').config();
 
 
@@ -19,6 +20,7 @@ app.use(cors());
 
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/products', productRoutes);
+app.use('/api/v1/orders', orderRoutes)
 
 
 
@@ -53,7 +55,7 @@ connectDB()
 app.get('/', (req, res) => { 
 
   res.send('Hello World!');
-  
+
 });
 
 app.listen(PORT, () => {
