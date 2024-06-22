@@ -23,7 +23,7 @@ app.use('/api/v1/products', productRoutes);
 
 
 
-// connectDB()
+connectDB()
 
 
 // async function connectionDB(){
@@ -35,18 +35,24 @@ app.use('/api/v1/products', productRoutes);
 //     console.error('Error in connectionDB:',err.message);
 //   } 
 // }
-connectDB();
-app.get('/', async(req, res) => {
+// connectDB();
+// app.get('/', async(req, res) => {
   
-  try{
-    // const isDbConnected = await connectDB();
+//   try{
+//     // const isDbConnected = await connectDB();
 
-    res.send('Hello World!');
-  }
-  catch(err){
-    console.error('Error in /:',err.message);
-    res.send('Error in /:'+err.message);    
-  }
+//     res.send('Hello World!');
+//   }
+//   catch(err){
+//     console.error('Error in /:',err.message);
+//     res.send('Error in /:'+err.message);    
+//   }
+  
+// });
+
+app.get('/', (req, res) => { 
+
+  res.send('Hello World!');
   
 });
 
