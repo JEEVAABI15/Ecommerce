@@ -23,13 +23,22 @@ app.use('/api/v1/products', productRoutes);
 
 
 
+// connectDB()
 
 
-
-
+// async function connectionDB(){
+//   try{
+//     const isDbConnected = await connectDB();
+//     console.log('isDbConnected:',isDbConnected);
+//   }
+//   catch(err){
+//     console.error('Error in connectionDB:',err.message);
+//   } 
+// }
 app.get('/', async(req, res) => {
-  const isDbConnected = await connectDB();
+  
   try{
+    const isDbConnected = await connectDB();
     res.send('Hello World!'+isDbConnected);
   }
   catch(err){
