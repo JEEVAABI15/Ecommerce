@@ -9,7 +9,6 @@ const productRoutes = require('./routes/productRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 require('dotenv').config();
 
-
 const app = express();
 const PORT = process.env.PORT || 8000;
 
@@ -29,8 +28,6 @@ app.use(cors());
     return "not connected"
   }   
 })();   
-
-//connectDB()
 
 app.get('/', (req, res) => { 
 
