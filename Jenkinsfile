@@ -18,7 +18,7 @@ pipeline {
         stage('Start Server') {
             steps {
                 script {
-                    sh 'nohup npm start-dev &'
+                    sh 'nohup npm run &'
                 }
             }
         }
