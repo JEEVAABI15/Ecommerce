@@ -18,7 +18,7 @@ pipeline {
         stage('Start Server') {
             steps {
                 script {
-                    sh 'nohup npm run &'
+                    sh 'nohup npm run > server.log 2>&1 &'
                 }
             }
         }
