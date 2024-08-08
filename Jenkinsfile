@@ -12,13 +12,13 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                sh 'npm install'
+                bat 'npm install'
             }
         }
         stage('Start Server') {
             steps {
                 script {
-                    sh 'nohup npm run > server.log 2>&1 &'
+                    bat 'npm run start'
                 }
             }
         }
