@@ -17,20 +17,20 @@ pipeline {
         }
         stage('Start Server') {
             steps {
-                script {
-                    // Start the server in the background
-                    bat 'start /B npm run start'
+                // script {
+                //     // Start the server in the background
+                //     bat 'start /B npm run start'
 
-                    // Optional: Wait for the server to start (5 seconds)
-                    sleep 5
+                //     // Optional: Wait for the server to start (5 seconds)
+                //     sleep 5
 
-                    // Check if the server is up by making a simple request
-                    bat """
-                        for /L %%i in (1,1,5) do (
-                            powershell -Command "try { \$response = Invoke-WebRequest http://localhost:8000; if (\$response.StatusCode -eq 200) { exit 0 } } catch { Write-Output 'Server not ready'; Start-Sleep -Seconds 2 }"
-                        )
-                    """
-                }
+                //     // Check if the server is up by making a simple request
+                //     bat """
+                //         for /L %%i in (1,1,5) do (
+                //             powershell -Command "try { \$response = Invoke-WebRequest http://localhost:8000; if (\$response.StatusCode -eq 200) { exit 0 } } catch { Write-Output 'Server not ready'; Start-Sleep -Seconds 2 }"
+                //         )
+                //     """
+                // }
             }
         }
     }
