@@ -7,7 +7,9 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/JEEVAABI15/Ecommerce', branch: 'main'
+                dir('C:\\Users\\jeeva\\Documents\\toHost') {
+                    git url: 'https://github.com/JEEVAABI15/Ecommerce', branch: 'main'
+                }
             }
         }
         stage('Install Dependencies') {
