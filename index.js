@@ -32,7 +32,7 @@ app.use(cors());
 
 app.get('/', (req, res) => { 
 
-  res.send('Hello this is working');
+  res.send('Hello this is working now...');
 
 });
 
