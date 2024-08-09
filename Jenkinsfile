@@ -14,7 +14,9 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                bat 'npm install'
+                dir('C:\\Users\\jeeva\\Documents\\toHost') {
+                    bat 'npm install'
+                }
             }
         }
     }
