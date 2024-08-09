@@ -5,15 +5,6 @@ pipeline {
     }
     tools {nodejs "node"}
     stages {
-                stage('Prepare Workspace') {
-            steps {
-                script {
-                    def buildDir = 'C:\\Users\\jeeva\\Documents\\toHost'
-                    bat "if exist ${buildDir} (rmdir /S /Q ${buildDir})"
-                    bat "mkdir ${buildDir}"
-                }
-            }
-        }
         stage('Checkout') {
             steps {
                 dir('C:\\Users\\jeeva\\Documents\\toHost') {
