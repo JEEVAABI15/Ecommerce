@@ -10,15 +10,15 @@ pipeline {
                 git url: 'https://github.com/JEEVAABI15/Ecommerce', branch: 'main'
             }
         }
-        stage('Install Dependencies') {
-            steps {
-                bat 'npm install'
-            }
-        }
+        // stage('Install Dependencies') {
+        //     steps {
+        //         bat 'npm install'
+        //     }
+        // }
         stage('Start Server') {
             steps {
                 script {
-                   bat 'start /B npm run start-dev'
+                   bat 'npm run start'
                 }
             }
         }
