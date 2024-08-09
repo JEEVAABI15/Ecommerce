@@ -18,7 +18,7 @@ pipeline {
         stage('Start Server') {
             steps {
                 script {
-                   bat 'start /B npm run start'
+                   bat 'start /B npm run start-dev'
                 }
             }
         }
